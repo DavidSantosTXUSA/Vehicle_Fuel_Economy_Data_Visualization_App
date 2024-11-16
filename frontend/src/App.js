@@ -1,74 +1,77 @@
-// src/App.js
-import React, { useEffect, useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import FuelEconomyChart from './FuelEconomyChart';
+import DataTable from './DataTable';
+import CarDataChart from './CarDataChart';
 function App() {
 	const [data, setData] = useState([]);
-	const [modelFilter, setModelFilter] = useState('');
+	const [loading, setLoading] = useState(false);
+	const [error, setError] = useState('');
 	const [yearFilter, setYearFilter] = useState('');
+	const [manufacturerFilter, setManufacturerFilter] = useState('');
+	const [divisionFilter, setDivisionFilter] = useState('');
+	const [carModelFilter, setCarModelFilter] = useState('');
 
 	useEffect(() => {
-			fetchData();
-			}, []);
-
-	const fetchData = () => {
-		axios.get('http://localhost:5001/api/data', {
+			const fetchData = async () => {
+			setLoading(true);
+			setError('');
+			try {
+			const response = await axios.get('http://localhost:5001/api/car-data', {
 params: {
-model: modelFilter,
-year: yearFilter
-}
-})
-.then(response => {
-		setData(response.data);
-		})
-.catch(error => {
-		console.error('There was an error fetching data!', error);
-		});
-};
+year: yearFilter,
+manufacturer: manufacturerFilter,
+division: divisionFilter,
+car_model: carModelFilter,
+},
+});
+			setData(response.data);
+			} catch (error) {
+			console.error('Error fetching data:', error);
+			setError('Failed to fetch data');
+			} finally {
+			setLoading(false);
+			}
+			};
 
-const handleFilterChange = () => {
-	fetchData();
-};
+fetchData();
+}, [yearFilter, manufacturerFilter, divisionFilter, carModelFilter]);
 
 return (
 		<div>
 		<h1>Toyota Fuel Economy Data</h1>
-		<div>
-		<input
-		type="text"
-		placeholder="Model"
-		value={modelFilter}
-		onChange={(e) => setModelFilter(e.target.value)}
-		/>
+		<div style={{ marginBottom: '20px' }}>
 		<input
 		type="number"
 		placeholder="Year"
 		value={yearFilter}
 		onChange={(e) => setYearFilter(e.target.value)}
+		style={{ marginRight: '10px' }}
 		/>
-		<button onClick={handleFilterChange}>Filter</button>
-		</div>
-		<table>
-		<thead>
-		<tr>
-<th>Model</th>
-<th>Year</th>
-<th>Engine Type</th>
-<th>Fuel Economy</th>
-</tr>
-</thead>
-<tbody>
-{data.map((item) => (
-			<tr key={item.id}>
-			<td>{item.model}</td>
-			<td>{item.year}</td>
-			<td>{item.engine_type}</td>
-			<td>{item.fuel_economy}</td>
-			</tr>
-		    ))}
-</tbody>
-</table>
-<FuelEconomyChart data={data} />
+		<input
+		type="text"
+		placeholder="Manufacturer"
+		value={manufacturerFilter}
+		onChange={(e) => setManufacturerFilter(e.target.value)}
+		style={{ marginRight: '10px' }}
+		/>
+		<input
+		type="text"
+		placeholder="Division"
+value={divisionFilter}
+onChange={(e) => setDivisionFilter(e.target.value)}
+style={{ marginRight: '10px' }}
+/>
+<input
+type="text"
+placeholder="Car Model"
+value={carModelFilter}
+onChange={(e) => setCarModelFilter(e.target.value)}
+style={{ marginRight: '10px' }}
+/>
+</div>
+<DataTable data={data} />
+<CarDataChart data={data} />
+)}
 </div>
 );
 }

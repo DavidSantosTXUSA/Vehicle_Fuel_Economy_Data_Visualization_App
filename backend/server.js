@@ -20,26 +20,41 @@ const pool = new Pool({
   connectionString: process.env.DATABASE_URL,
 });
 
-app.get('/api/data', async (req, res) => {
+app.get('/api/car-data', async (req, res) => {
   try {
-    const { model, year } = req.query;
-    let query = 'SELECT * FROM fuel_economy';
+    const { year, manufacturer, division, car_model } = req.query;
+    let query = 'SELECT * FROM car_data';
     const params = [];
-
-    if (model) {
-      params.push(`%${model}%`);
-      query += ` WHERE model ILIKE $${params.length}`;
-    }
+    const conditions = [];
 
     if (year) {
       params.push(year);
-      query += params.length === 1 ? ` WHERE year = $${params.length}` : ` AND year = $${params.length}`;
+      conditions.push(`year = $${params.length}`);
+    }
+
+    if (manufacturer) {
+      params.push(`%${manufacturer}%`);
+      conditions.push(`manufacturer ILIKE $${params.length}`);
+    }
+
+    if (division) {
+      params.push(`%${division}%`);
+      conditions.push(`division ILIKE $${params.length}`);
+    }
+
+    if (car_model) {
+      params.push(`%${car_model}%`);
+      conditions.push(`car_model ILIKE $${params.length}`);
+    }
+
+    if (conditions.length > 0) {
+      query += ' WHERE ' + conditions.join(' AND ');
     }
 
     const result = await pool.query(query, params);
     res.json(result.rows);
-  } catch (err) {
-    console.error(err);
+  } catch (error) {
+    console.error(error);
     res.status(500).json({ error: 'Database query failed' });
   }
 });
