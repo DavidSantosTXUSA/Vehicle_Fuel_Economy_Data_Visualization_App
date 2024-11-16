@@ -46,12 +46,15 @@ npm install axios
 ```
 ### 3. Import CSV Data
 
-Connect to PostgreSQL:
+Connect to PostgreSQL and create the database:
 
 ```bash
-psql -U your_username -d toyota_fuel_economy
+psql -U your_username
+CREATE DATABASE database_name;
+\c database_name;
 ```
-Create the fuel_usage table:
+
+### Create the fuel_usage table:
 
 ```sql
 CREATE TABLE fuel_usage (
