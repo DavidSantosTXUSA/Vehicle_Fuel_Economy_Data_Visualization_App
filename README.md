@@ -84,14 +84,14 @@ FROM '/path/to/your/data.csv' DELIMITER ',' CSV HEADER;
 \q
 ```
 
-###Dependencies
-##Backend:
+### Dependencies
+## Backend:
 express: ^4.17.1
 cors: ^2.8.5
 dotenv: ^8.2.0
 pg: ^8.5.1
 
-##Frontend:
+## Frontend:
 react: ^17.0.2
 react-dom: ^17.0.2
 axios: ^0.21.1
