@@ -111,7 +111,7 @@ function App() {
   return (
     <div className="App">
       <header className="App-header fade-in">
-        <h1>Toyota Fuel Economy Data</h1>
+        <h1>Vehicle Fuel Economy Data</h1>
         <div className="filter-container fade-in">
           <select
             value={yearFilter}
@@ -201,7 +201,7 @@ function App() {
 
       <div className="chart-container fade-in">
         {!searchPerformed && !loading && !error && (
-          <p className="placeholder-text">Perform a search to display the chart.</p>
+          <p className="placeholder-text">Perform a search to display a chart.</p>
         )}
         {loading && <p>Loading...</p>}
         {!loading && searchPerformed && !error && (
@@ -219,7 +219,7 @@ function App() {
       </div>
       <div className="table-container fade-in">
         {!searchPerformed && !loading && !error && (
-          <p className="placeholder-text">Perform a search to display the table.</p>
+          <p className="placeholder-text">Perform a search to display a table.</p>
         )}
         {loading && <p>Loading...</p>}
         {!loading && searchPerformed && !error && <DataTable data={data} />}
