@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import DataTable from './DataTable';
 import CarDataChart from './CarDataChart';
@@ -27,7 +27,6 @@ function App() {
     highwayCO2Emissions: false,
     combinedCO2Emissions: false,
   });
-
   const handleSearch = async () => {
     setLoading(true);
     setError('');
