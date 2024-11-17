@@ -111,7 +111,7 @@ function App() {
   return (
     <div className="App">
       <header className="App-header fade-in">
-        <h1>Vehicle Fuel Economy Data</h1>
+        <h1>Vehicle Fuel Economy Data Visualization App</h1>
         <div className="filter-container fade-in">
           <select
             value={yearFilter}
