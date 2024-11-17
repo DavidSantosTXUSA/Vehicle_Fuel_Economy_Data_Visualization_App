@@ -61,16 +61,18 @@
   font-size: 1.2rem;
   color: #b0bec5;
 }
-
-/* Chart Styling */
 .chart-container {
   background: rgba(255, 255, 255, 0.1);
   border-radius: 10px;
   padding: 20px;
   box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.6);
   margin: 20px auto;
-  max-width: 90%;
+  width: 100%; /* Use full width */
+  max-width: 100%; /* Ensure no extra margin on larger screens */
+  height: 500px; /* Set height to maintain readability */
+  overflow-x: auto; /* Allow horizontal scrolling if necessary */
 }
+
 
 .chart-container h2 {
   font-size: 1.8rem;
@@ -164,4 +166,40 @@ button:hover {
   table td {
     font-size: 0.9rem;
   }
+}
+
+nav {
+  margin-top: 20px;
+}
+
+nav a {
+  margin: 0 15px;
+  text-decoration: none;
+  color: #4dd0e1;
+  font-weight: bold;
+}
+
+nav a:hover {
+  color: #1de9b6;
+  text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.7);
+}
+.placeholder-text {
+  color: #f5f5f5;
+  font-size: 1.2rem;
+  text-align: center;
+  margin-top: 20px;
+}
+@keyframes fadeInSlide {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fade-in {
+  animation: fadeInSlide 1.5s ease-in-out;
 }
