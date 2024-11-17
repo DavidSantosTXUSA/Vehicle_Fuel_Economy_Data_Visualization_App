@@ -33,7 +33,7 @@ DATABASE_URL=postgresql://postgres:yourpassword@localhost:5432/toyota_fuel_econo
 and if you need to create a new user do the following
 
 ```bash
-psql -U postgres 
+psql postgres 
 CREATE USER your_username WITH PASSWORD 'your_password';
 ```
 
@@ -112,6 +112,11 @@ FROM '/path/to/your/data.csv' DELIMITER ',' CSV HEADER;
 
 ```sql
 \q
+```
+###configure backend to connect to PostgreSQL
+create a .env file in the backend folder
+```bash
+DATABASE_URL=postgresql://postgres_username:your_password@localhost:5432/databasename
 ```
 
 ### 4. Run the Application
