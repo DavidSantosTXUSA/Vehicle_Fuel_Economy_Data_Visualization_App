@@ -204,8 +204,8 @@ function CarDataChart({
         title: { display: true, text: yAxisLabel, color: '#f5f5f5', font: { size: 14, weight: 'bold' } },
       },
     },
-    barPercentage: 1, // Increase bar width
-    categoryPercentage: 1, // zero space between 
+    barPercentage: data.length > 50 ? 1 : 0.8,
+  categoryPercentage: data.length > 50 ? 1 : 0.8,
   };
 
   return (
