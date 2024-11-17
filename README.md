@@ -1,4 +1,4 @@
-# GreenGearAnalytics The Toyota Fuel Economy Analysis App!
+# Vechicle Fuel Economy Analysis App!
 
 An application to analyze vehicle fuel economy data from 2021 to 2025.
 
