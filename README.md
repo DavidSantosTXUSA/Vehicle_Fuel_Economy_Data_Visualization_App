@@ -84,14 +84,14 @@ FROM '/path/to/your/data.csv' DELIMITER ',' CSV HEADER;
 \q
 ```
 
-### Dependencies
-## Backend:
+###Dependencies
+##Backend:
 express: ^4.17.1
 cors: ^2.8.5
 dotenv: ^8.2.0
 pg: ^8.5.1
 
-## Frontend:
+##Frontend:
 react: ^17.0.2
 react-dom: ^17.0.2
 axios: ^0.21.1
@@ -103,4 +103,85 @@ Ensure that both the backend and frontend servers are running simultaneously.
 Make sure to update the .env file with your actual database credentials.
 The backend server runs on port 5001; adjust the frontend API calls if the port is different.
 
-### OPTIONAL HOW TO SET UP THE AI CHATBOT
+### AI CHATBOT FEATURE
+
+This web application helps users analyze vehicle fuel economy data (2021–2025) by leveraging AI. Users can input vehicle details and receive insights such as fuel efficiency, annual fuel costs, and comparisons with other vehicles.
+
+## Features
+Analyze vehicle performance metrics like fuel economy, greenhouse gas ratings, and CO2 emissions.
+Compare selected vehicles with similar models from the dataset.
+AI-powered recommendations for more fuel-efficient vehicles.
+
+## Prerequisites
+Make sure you have the following installed:
+
+- Node.js (v18 or later)
+- Git
+- PostgreSQL (for the backend database)
+- API Key from OpenAI
+
+## Installation
+
+- Clone the Repository
+
+        bash
+        git clone https://github.com/username/repository-name.git
+        cd repository-name
+    
+- Install Dependencies
+
+        npm install
+
+- Run the following command to install the required Node.js packages:
+
+        bash
+        npm install
+
+
+- Set Up the Database
+
+- Make sure your PostgreSQL service is running.
+- Create a new database (e.g., vehicle_analysis_db).
+- Add your database credentials to a .env file:
+
+        DB_HOST=localhost
+        DB_PORT=5432
+        DB_USER=your_db_username
+        DB_PASSWORD=your_db_password
+        DB_NAME=vehicle_analysis_db
+
+- Import the provided SQL schema (if any) to set up the database tables.
+- Add OpenAI API Key
+
+In the .env file, add your OpenAI API Key:
+
+        OPENAI_API_KEY=your_openai_api_key
+
+- Start the Application
+
+- Run the following command to start the backend server:
+
+        bash
+        Copy code
+        node index.js
+
+- Make sure the server is running on port 8080 (or the specified port).
+- Run the Frontend
+
+- Ensure your frontend files (HTML, CSS, JS) are set up.
+- If needed, you can use a local server (e.g., Live Server) to host the frontend.
+
+## Usage
+
+- Open the frontend in your browser.
+- Interact with the AI by entering vehicle details (year, brand, model, etc.).
+- The AI will fetch data from the dataset and provide a detailed analysis and comparison.
+
+## Project Structure
+# Backend:
+- index.js: Main server file to handle API requests.
+- openai.service.js: AI integration and file setup for OpenAI API.
+# Frontend:
+- JavaScript, HTML, and CSS files for user interaction.
+# Data:
+- cardata.pdf: Dataset used for AI analysis.
