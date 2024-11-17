@@ -28,8 +28,9 @@ function CarDataChart({ data }) {
         label: 'Combined FE',
         data: data.map((item) => item.comb_fe),
         backgroundColor: 'rgba(75, 192, 192, 0.6)',
+        borderColor: 'rgba(75, 192, 192, 1)',
+        borderWidth: 1,
       },
-      // You can add more datasets here
     ],
   };
 
@@ -39,12 +40,72 @@ function CarDataChart({ data }) {
       title: {
         display: true,
         text: 'Combined Fuel Economy by Car Model',
+        color: '#ffffff', // Title color
+        font: {
+          size: 18,
+          weight: 'bold',
+        },
+      },
+      legend: {
+        labels: {
+          color: '#ffffff', // Legend text color
+          font: {
+            size: 14,
+          },
+        },
+      },
+      tooltip: {
+        bodyFont: {
+          size: 14,
+        },
+        titleFont: {
+          size: 16,
+        },
+      },
+    },
+    scales: {
+      x: {
+        ticks: {
+          color: '#ffffff', // X-axis labels color
+          font: {
+            size: 12,
+          },
+        },
+        title: {
+          display: true,
+          text: 'Car Models',
+          color: '#ffffff', // X-axis title color
+          font: {
+            size: 14,
+            weight: 'bold',
+          },
+        },
+      },
+      y: {
+        ticks: {
+          color: '#ffffff', // Y-axis labels color
+          font: {
+            size: 12,
+          },
+        },
+        title: {
+          display: true,
+          text: 'Combined Fuel Economy (MPG)',
+          color: '#ffffff', // Y-axis title color
+          font: {
+            size: 14,
+            weight: 'bold',
+          },
+        },
       },
     },
   };
 
-  return <Bar data={chartData} options={options} />;
+  return (
+    <div className="chart-container">
+      <Bar data={chartData} options={options} />
+    </div>
+  );
 }
 
 export default CarDataChart;
-
