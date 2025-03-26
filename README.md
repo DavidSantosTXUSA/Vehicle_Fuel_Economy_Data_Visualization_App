@@ -2,6 +2,20 @@
 
 An interactive web application that allows users to visualize and analyze vehicle fuel economy data from 2021 to 2025. The app provides filtering options, sorting, and dynamic charts to help users gain insights into fuel efficiency, CO<sub>2</sub> emissions, and other important metrics.
 
+## Youtube demo!
+
+https://www.youtube.com/watch?v=HvtVZsljaiQ
+
+## Screenshots!
+
+| Sorted Chart | Unsorted Query |
+|------------|-------------------|
+| ![Chart1](./screenshot1.png) | ![](./screenshot2.png) |
+
+| AI Chat bot | AI chat Bot 2 |
+|--------------------------|------------|
+| ![](./screenshot3.png) | ![](./screenshot4.png) |
+
 ## Features
 
 - **Filtering**: Filter data by year, manufacturer, division, and car model.
